@@ -1,0 +1,59 @@
+create database batch42; //create database
+use batch42; 
+
+//date time 
+select now();
+
+//concat 
+select concat('john ', 'doe');
+
+use world; //operate database
+show tables; //show the data
+
+//select all pr star
+select * from country; 
+select * from city;
+select * from person; 
+select * from countrylanguage;
+
+//multiple selections
+select Language, CountryCode from countrylanguage; 
+
+//alias - renaming
+select Name from city as cityName;
+select Name from city cityName;
+select concat('john ', 'doe') as FullName;
+
+//sorting 
+select Population CityPopulation From city order by Population DESC;
+select Name CountryName, Continent FROM country order by Name asc,Code desc; //both
+
+//performs operations
+SELECT orderNumber, orderLineNumber, 
+  quantityOrdered * priceEach AS subtotal 
+FROM orderdetails 
+ORDER BY subtotal DESC;
+
+//we can sort ordernumber byy the status in given order of status
+SELECT orderNumber, status FROM orders ORDER BY 
+FIELD(status, 
+    'In Process', 
+    'On Hold', 
+    'Cancelled', 
+    'Resolved', 
+    'Disputed', 
+    'Shipped');
+
+//MySQL ORDER BY and NULL
+NULL comes before non-NULL values. 
+Therefore, when you the ORDER BY clause with the ASC option, 
+NULLs appear first in the result set.
+
+SELECT firstName, lastName, reportsTo 
+FROM employees 
+ORDER BY reportsTo;
+
+
+
+select Name as countryName from country order by Name DESC limit 10;
+select Name as countryName from country where Name Like 'z%';
