@@ -54,6 +54,43 @@ FROM employees
 ORDER BY reportsTo;
 
 
+select Name, Continent, Code From country where Continent ='Asia'; 
+//and
+select Name, Continent, Code From country where Continent ='Asia' and code= 'AFG';
+
+//or
+select Name, Continent, Code From country where Continent ='Asia' or code= 'AFG';
+
+//between
+select CountryCode, Percentage as Language_Percentage 
+from countrylanguage 
+where Percentage between 50 and 80;
+order by CountryCode ;
+
+//like
+select Name as country_name from country 
+where name like '%a'
+order by Name ;
+
+//in
+select CountryCode ,Percentage as Lang_percentage from countrylanguage
+where Percentage in (50,90,70)
+order by Percentage ;
+
+//values that are null
+select Language 
+from countrylanguage
+where Language is null;
+
+//operations 
+select Population as Country_Population from country 
+where Population < 10000;
+
+
+
+
+
+
 
 select Name as countryName from country order by Name DESC limit 10;
 select Name as countryName from country where Name Like 'z%';
